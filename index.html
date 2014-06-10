@@ -18,24 +18,23 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div style='width: 256px; height: 256px; margin:auto; margin-top: 15%;'><img src="http://ftparmy.com/images/hal9000-01.jpg"></div>
+        <div style='width: 603px; height: 603px; margin:auto; margin-top: 6%;'><img src="http://courseweb.lis.illinois.edu/~wade7/Animation/hawkingspins.gif"></div>
 
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
         <script>
             $(function(){
                 window.speechSynthesis.onvoiceschanged = function(){
-                    var parts = ["", "Daisy", "daisy", "give", "me", "your", "answer", "do"];
-                    var voices = window.speechSynthesis.getVoices();
-                    var alexVoice = voices.filter(function(voice) { return voice.name == 'Alex'; })[0];
-                    for (var i = 0; i < parts.length; i++) {
-                        var utterance = new SpeechSynthesisUtterance();
-                        utterance.text = parts[i];
-                        utterance.rate = 0.9/i;
-                        utterance.voice = alexVoice;
-                        utterance.pitch = 1/i;
-                        speechSynthesis.speak(utterance);
-                    }
+                    var answers = [ "It is certain", "It is decidedly so", "Without a doubt", "Yes definitely", "You may rely on it", "As I see it, yes", "Most likely", "Outlook good", "Yes", "Signs point to yes", "Reply hazy try again", "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again", "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"];
+                    var answer = answers[Math.floor(Math.random() * answers.length)];
+                    var voices = speechSynthesis.getVoices();
+                    var hawking = voices.filter(function(voice) { return voice.name == 'Zarvox'; })[0];
+                    var u = new SpeechSynthesisUtterance();
+                    u.text = answer;
+                    u.rate = 1;
+                    u.voice = hawking;
+                    u.pitch = 1;
+                    speechSynthesis.speak(u);
                 }
             });
         </script>
